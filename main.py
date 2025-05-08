@@ -1,9 +1,5 @@
-
+from load import Loader
 
 def main(request):
-
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    main()
+    response = request.get_json()
+    Loader().load(response)
