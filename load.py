@@ -1,4 +1,3 @@
-import json
 import os
 
 import pandas as pd
@@ -13,7 +12,5 @@ class Loader:
         self.table_id = os.getenv("TABLE_ID")
         self.client = bigquery.Client()
 
-    def load(self, data: str):
-        data: dict = json.loads(data)
-        df = pd.DataFrame(data)
+    def load(self, df: pd.DataFrame):
         self.client.load_table_from_dataframe(df, self.table_id).result()
